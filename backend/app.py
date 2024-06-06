@@ -1,4 +1,3 @@
-# backend/app.py
 from flask import Flask, request, jsonify
 import logging
 import sqlite3
@@ -33,7 +32,7 @@ def submit_data():
         return jsonify({'message': 'Data inserted successfully!'}), 201
     except Exception as e:
         logging.error(f"Error: {str(e)}")
-        return jsonify({'error': 'Failed to insert data'}), 500
+        return jsonify({'error': f'Failed to insert data: {str(e)}'}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
